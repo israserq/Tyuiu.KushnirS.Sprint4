@@ -1,64 +1,75 @@
 ﻿using Tyuiu.KushnirS.Sprint4.Task5.V16.Lib;
 namespace Tyuiu.KushnirS.Sprint4.Task5.V16
 {
-    internal class Program
-    {
-        static void Main(string[] args)
+
+        internal class Program
         {
-            DataService ds = new DataService();
-            Random rnd = new Random();
-
-           
-            Console.WriteLine("* УСЛОВИЕ:" + String.Concat(Enumerable.Repeat(" ", 64)) + "*");
-            Console.WriteLine("* Написать програму, которая заменяет положительные элементы массива на 1 *");
-            Console.WriteLine("* и печатает массив на экран.                                             *");
-            Console.WriteLine("*" + String.Concat(Enumerable.Repeat(" ", 73)) + "*");
-            Console.WriteLine(String.Concat(Enumerable.Repeat("*", 75)));
-            Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:" + String.Concat(Enumerable.Repeat(" ", 56)) + "*");
-            Console.WriteLine(String.Concat(Enumerable.Repeat("*", 75)));
-
-            Console.WriteLine("Введите количевство строк матрицы: ");
-            int rows = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Введите количевство столбцов матрицы: ");
-            int columns = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine(String.Concat(Enumerable.Repeat("*", 75)));
-
-            int[,] matrix = new int[rows, columns];
-
-            for (int i = 0; i < rows; i++)
+            static void Main(string[] args)
             {
-                for (int j = 0; j < columns; j++)
-                {
-                    matrix[i, j] = rnd.Next(-6, 3);
-                }
-            }
+                Random rnd = new Random();
 
-            Console.WriteLine("\nМатрица:");
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
+                DataService ds = new DataService();
+
+                Console.Title = "Спринт #4 | Выполнил: Гурзан.В.М  | СМАРТБ-24-1";
+                Console.WriteLine("***************************************************************************");
+                Console.WriteLine("* Спринт #4                                                               *");
+                Console.WriteLine("* Тема: Одномерные массивы. Ввод с клавиатуры                             *");
+                Console.WriteLine("* Задание #2                                                              *");
+                Console.WriteLine("* Вариант #6                                                              *");
+                Console.WriteLine("* Выполнил: Гурзан Владислав Михайлович |  СМАРТБ-24-1                    *");
+                Console.WriteLine("***************************************************************************");
+                Console.WriteLine("* УСЛОВИЕ:                                                                *");
+                Console.WriteLine("* Дан двумерный целочисленный массив 5 на 5 элементов, заполненный        *");
+                Console.WriteLine("* случайными значениями в диапазоне от -6 до 3. Заменить положительные    *");
+                Console.WriteLine("* элементы на 1.                                                          *");
+                Console.WriteLine("***************************************************************************");
+                Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
+                Console.WriteLine("***************************************************************************");
+
+                Console.Write("Введите количество строк в массиве: ");
+                int rows = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Введите количество столбцов в массиве: ");
+                int colums = Convert.ToInt32(Console.ReadLine());
+
+                int[,] mtrx = new int[rows, colums];
+
+                Console.WriteLine("***************************************************************************");
+
+                for (int i = 0; i < rows; i++)
                 {
-                    Console.Write($"{matrix[i, j]} \t");
+                    for (int j = 0; j < colums; j++)
+                    {
+                        mtrx[i, j] = rnd.Next(-6, 3);
+                    }
                 }
+
+                Console.WriteLine("\nМассив:");
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < colums; j++)
+                    {
+                        Console.Write($"{mtrx[i, j]} \t");
+                    }
+                    Console.WriteLine();
+                }
+
                 Console.WriteLine();
-            }
+                Console.WriteLine("***************************************************************************");
+                Console.WriteLine("*РЕЗУЛЬТАТ:                                                               *");
+                Console.WriteLine("***************************************************************************");
+                int[,] res = ds.Calculate(mtrx);
 
-            Console.WriteLine(String.Concat(Enumerable.Repeat("*", 75)));
-            Console.WriteLine($"* Результат:{String.Concat(Enumerable.Repeat(" ", 62))}*");
-            Console.WriteLine(String.Concat(Enumerable.Repeat("*", 75)));
-
-            for (int i = 0; i < ds.Calculate(matrix).GetLength(0); i++)
-            {
-                for (int j = 0; j < ds.Calculate(matrix).GetLength(1); j++)
+                Console.WriteLine("\nИтоговый массив:");
+                for (int i = 0; i < rows; i++)
                 {
-                    Console.Write($"{ds.Calculate(matrix)[i, j]} \t");
+                    for (int j = 0; j < colums; j++)
+                    {
+                        Console.Write($"{mtrx[i, j]} \t" + res);
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+                Console.ReadKey();
             }
-
-            Console.ReadKey();
         }
     }
-}

@@ -5,48 +5,42 @@ namespace Tyuiu.KushnirS.Sprint4.Task2.V6
     {
         static void Main(string[] args)
         {
+
             
             Console.WriteLine("* УСЛОВИЕ:                                                                *");
-            Console.WriteLine("* Дан одномерный целочисленный массив на 15 элементов                     *");
-            Console.WriteLine("* заполненный статическими значениями в диапазоне от 2 до 8               *");
-            Console.WriteLine("* подсчитать произведение нечетных элементов random массива.              *");
-            Console.WriteLine("*                                                                         *");
-            Console.WriteLine("*                                                                         *");
-            Console.WriteLine("***************************************************************************");
-
-
-            DataService ds = new DataService();
-            Random rnd = new Random();
+            Console.WriteLine("* Дан одномерный целочисленный массив на 15 элементов заполненный         *");
+            Console.WriteLine("* зслучайными в диапазоне от 2 до 8 подсчитать произведение нечетных      *");
+            Console.WriteLine("* элементов массива.                                                      *");
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
             Console.WriteLine("***************************************************************************");
+            DataService ds = new DataService();
+            Random rnd = new Random();
 
-            Console.WriteLine("Введите количество элементов в массиве");
+            Console.WriteLine("Введите колличество элемментов массива: ");
+
             int len = Convert.ToInt32(Console.ReadLine());
 
-
-            int[] numsArray = new int[len];
-
-            for (int i = 0; i <= len - 1; i++)
+            int[] numsArry = new int[len];
+            for (int i = 0; 1 <= len; i++)
             {
-                numsArray[i] = rnd.Next(2, 8);
+                numsArry[i] = rnd.Next(2, 8);
             }
-            Console.WriteLine();
+
             Console.WriteLine("Массив: ");
-            for (int i = 0; i <= len - 1; i++)
+            for (int i = 0; 1 <= len; i++)
             {
-                Console.WriteLine(numsArray[i] + "\t");
+                Console.WriteLine(numsArry[i] + "\t");
             }
+
             Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("********************************************************************************");
+            Console.WriteLine("* РЕЗУЛЬТАТ:                                                                   *");
+            Console.WriteLine("********************************************************************************");
 
+            int res = ds.Calculate(numsArry);
 
-            Console.WriteLine("****************************************************************************");
-            Console.WriteLine("* РЕЗУЛЬТАТ:                                                               *");
-            Console.WriteLine("****************************************************************************");
-            Console.WriteLine("Произведение нечётных элементов массива: ");
-            Console.WriteLine(ds.Calculate(numsArray));
-
+            Console.WriteLine("Произведение нечетных элементов = " + res);
             Console.ReadKey();
         }
     }

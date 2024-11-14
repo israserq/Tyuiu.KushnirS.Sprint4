@@ -5,15 +5,16 @@ namespace Tyuiu.KushnirS.Sprint4.Task2.V6.Lib
     {
         public int Calculate(int[] array)
         {
-            int pro = 1;
-            foreach (int i in array)
+            int sumArray = 1;
+
+            for (int i = 0; i <= array.Length - 1; i++)
             {
-                if (i % 2 == 0)
+                if (array[i] % 2 != 0)
                 {
-                    pro = pro * i;
+                    sumArray = sumArray * array[i];
                 }
             }
-            return pro;
+            return sumArray;
         }
     }
 }

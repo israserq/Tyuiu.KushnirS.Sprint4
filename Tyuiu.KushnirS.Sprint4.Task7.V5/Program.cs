@@ -1,28 +1,40 @@
 ﻿using Tyuiu.KushnirS.Sprint4.Task7.V5.Lib;
 namespace Tyuiu.KushnirS.Sprint4.Task7.V5
 {
-    internal class Program
+    public class Class1
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             DataService ds = new DataService();
-            string v = "695324951753684";
-            int n = 5, m = 3;
-           
+            int result;
+
+            
             Console.WriteLine("***************************************************************************");
-            Console.WriteLine("* УСЛОВИЕ:                                                                *");
-            Console.WriteLine("* Дана строка из одноразрядных цифр.                                      *");
-            Console.WriteLine("* Преобразуйте ее в матрицу 5 на 3 и подсчитайте сумму нечетных чисел.    *");
+            Console.WriteLine("* Условие: Дана строка из одноразрядных цифр.                             *\n" +
+                              "* Преобразуйте ее в матрицу 3 на 3 и подсчитайте количество четных чисел. *");
             Console.WriteLine("***************************************************************************");
-            Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
-            Console.WriteLine("***************************************************************************");
-            Console.WriteLine("* 695324951753684                                                            *");
-            Console.WriteLine("***************************************************************************");
-            Console.WriteLine("* Результат:                                                              *");
+            Console.WriteLine("* Исходные данные:                                                        *");
+            Console.Write("* Строка = ");
+            string input = Console.ReadLine();
+            Console.WriteLine("Массив:");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(input.Substring(j * 3 + i, 1) + "; ");
+                }
+                Console.WriteLine();
+            }
             Console.WriteLine("***************************************************************************");
 
-            Console.Write("Произведение четных элементов массива равно " + ds.Calculate(n, m, v));
-            Console.ReadLine();
+            { 
+                result = ds.Calculate(3, 3, input);
+            }
+            Console.WriteLine("* Результат:                                                              *");
+            Console.WriteLine("***************************************************************************");
+            Console.WriteLine($"*  = {result}");
+            Console.WriteLine("***************************************************************************");
+            Console.ReadKey();
         }
     }
 }
